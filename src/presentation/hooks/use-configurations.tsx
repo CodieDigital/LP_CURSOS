@@ -1,21 +1,26 @@
 import { FileSystemType, useDynamicSection } from "infinity-forge";
 
-export type Configurations = {
+export type IConfigurationsTheme = {
   primaryColor: string;
   darkColor: string;
   secondaryColor: string;
   tertiaryColor: string;
+  buttonColor: string;
+  inputColor: string;
+  inputBorderColor: string;
+  inputBackgroundColor: string;
+  buttonBackgroundColor: string;
+};
+
+export type Configurations = {
   logo: FileSystemType[];
   isNetflix: boolean;
   pixelFacebook?: string;
-  inputBorderColor: string;
-  inputBackgroundColor: string;
-  inputColor: string;
+  loginUrl?: string;
   subscriptionPrice?: string;
-  buttonColor: string;
-  buttonBackgroundColor: string;
+
   favicon?: FileSystemType[];
-};
+} & IConfigurationsTheme;
 
 export function useConfigurations() {
   return useDynamicSection<Configurations>({
@@ -24,6 +29,13 @@ export function useConfigurations() {
     customForm: {
       button: { text: "Salvar" },
       inputs: [
+        [
+          {
+            InputComponent: "Input",
+            label: "Login URL",
+            name: "jsonContent.loginUrl",
+          },
+        ],
         [
           {
             InputComponent: "InputFile",

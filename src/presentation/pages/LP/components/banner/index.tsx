@@ -5,24 +5,29 @@ import {
   useWindow,
   useCarousel,
   useDynamicSection,
+  useElementId,
 } from "infinity-forge";
+
+import { dynamicConfig, IJsonContent } from "./dynamic-config";
 
 import * as S from "./styles";
 
 export function Banner() {
   const _window = useWindow();
+  const headerHeight =
+    useElementId({
+      id: "header",
+    })?.offsetHeight || 0;
 
-  const { Section, title, description, linkText, linkUrl, images } =
-    useDynamicSection({
-      refSection: "BannerHome",
-      fields: {
-        title: {},
-        images: {},
-        linkUrl: {},
-        linkText: {},
-        description: {},
-      },
-    });
+  const {
+    title,
+    Section,
+    images,
+    linkUrl,
+    linkText,
+    description,
+    jsonContent,
+  } = useDynamicSection<IJsonContent>(dynamicConfig);
 
   const { Carousel } = useCarousel({
     items: [
@@ -51,7 +56,7 @@ export function Banner() {
           className="banner-slide"
         >
           <Container>
-            <div />
+            <div style={{ height: `${headerHeight}px` }} />
 
             <div className="text">
               {title && (
@@ -69,12 +74,28 @@ export function Banner() {
               )}
 
               <div className="buttons">
-                <Button
-                  text={linkText}
-                  href={linkUrl}
-                  target="_blank"
-                  className="font-16-bold"
-                />
+                {jsonContent?.button1Url && (
+                  <Button
+                    text={jsonContent?.button1Text}
+                    href={jsonContent?.button1Url}
+                    target={jsonContent?.button1IsExternal ? "_blank" : "_self"}
+                    className="font-16-bold"
+                    style={{
+                      color: jsonContent?.button1Color,
+                      backgroundColor: jsonContent?.button1Background,
+                    }}
+                  />
+                )}
+
+                {(linkText || linkUrl) && (
+                  <Button
+                    text={linkText}
+                    href={linkUrl}
+                    target="_blank"
+                    className="font-16-bold"
+                    svg="IconUserNoBg"
+                  />
+                )}
               </div>
             </div>
 

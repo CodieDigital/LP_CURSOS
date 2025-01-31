@@ -46,9 +46,9 @@ export const Banner = styled("section")`
       gap: 16px;
       align-items: center;
 
-      > div:last-child > a {
-        color: ${({ theme }) => theme.green};
-        border: 1px solid ${({ theme }) => theme.green};
+      a {
+        color: ${({ theme }) => theme.primaryColor};
+        border: 1px solid ${({ theme }) => theme.primaryColor};
         background-color: transparent;
       }
     }
