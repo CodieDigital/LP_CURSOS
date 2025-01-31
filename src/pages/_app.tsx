@@ -14,14 +14,18 @@ import {
 
 import "infinity-forge/dist/infinity-forge.css";
 
-export default function App({ pageProps, Component }) {
+export default function App(ctx) {
+  const initialConfigurations = ctx?.pageProps ? ctx?.pageProps?.sections?.find(
+    (section) => section?.ref === "global_configurations"
+  )?.jsonContent  : {};
+
+  console.log(initialConfigurations)
+
   const router = useRouter();
   const [configurations] = useState<Configurations>(
-    JSON.parse(
-      (pageProps.sections as DynamicSection[])?.find(
-        (section) => section.ref === "global_configurations"
-      )?.jsonContent || {}
-    )
+    initialConfigurations ? JSON.parse(
+      initialConfigurations
+    ) : undefined
   );
 
   useEffect(() => {
@@ -47,7 +51,7 @@ export default function App({ pageProps, Component }) {
           message: "Olá, gostaria de mais informações sobre o curso",
         }),
       }}
-      atena={{ ...pageProps, roles: ["administradorMaster"] }}
+      atena={{ ...ctx?.pageProps, roles: ["administradorMaster"] }}
       i18n={{ roleToEditLanguage: ["administradorMaster"] }}
       theme={{
         ...InfinityForgeProps.theme,
@@ -73,7 +77,7 @@ export default function App({ pageProps, Component }) {
       </Head>
       <ConfigurationComponent>
         <GlobalStyles $configurations={configurations} />
-        <Component {...pageProps} />
+        <ctx.Component {...ctx?.pageProps} />
       </ConfigurationComponent>
     </InfinityForgeProviders>
   );
