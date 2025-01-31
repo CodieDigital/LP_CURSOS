@@ -1,3 +1,3 @@
-import { Page404 } from "infinity-forge";
-
-export default Page404;
+export default function Page4044() {
+  return <div>Pagina nao encontrada</div>;
+}
