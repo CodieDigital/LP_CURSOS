@@ -33,6 +33,12 @@ export const ImageText = styled("section")<{
       }
     }
 
+    .subtitle {
+      color: ${({ theme }) => theme.primaryColor};
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
     .description {
       line-height: 1.25;
     }

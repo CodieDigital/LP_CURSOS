@@ -1,3 +1,4 @@
-export * from "./pages"
-export * from './styles'
-export * from "./components"
+export * from "./pages";
+export * from "./hooks";
+export * from "./styles";
+export * from "./components";

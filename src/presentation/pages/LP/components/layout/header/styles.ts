@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 export const Header = styled("header")<{ $hasEnterbutton?: boolean }>`
-  background-color: ${(props) => props.theme.black};
+  /* background-color: ${(props) => props.theme.black}; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 90;
 
   .container {
     display: flex;

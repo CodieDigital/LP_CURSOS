@@ -1,16 +1,28 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import { InfinityForgeProviders, phone } from "infinity-forge";
+import { phone, DynamicSection, InfinityForgeProviders } from "infinity-forge";
 
-import { GlobalStyles, InfinityForgeProps } from "@/presentation";
+import {
+  GlobalStyles,
+  Configurations,
+  InfinityForgeProps,
+  ConfigurationComponent,
+} from "@/presentation";
 
 import "infinity-forge/dist/infinity-forge.css";
 
 export default function App({ pageProps, Component }) {
   const router = useRouter();
+  const [configurations] = useState<Configurations>(
+    JSON.parse(
+      (pageProps.sections as DynamicSection[])?.find(
+        (section) => section.ref === "global_configurations"
+      )?.jsonContent || {}
+    )
+  );
 
   useEffect(() => {
     import("react-facebook-pixel")
@@ -25,8 +37,6 @@ export default function App({ pageProps, Component }) {
       });
   }, [router.events]);
 
-  console.log(pageProps)
-
   return (
     <InfinityForgeProviders
       {...InfinityForgeProps}
@@ -37,8 +47,17 @@ export default function App({ pageProps, Component }) {
           message: "Olá, gostaria de mais informações sobre o curso",
         }),
       }}
-
-      atena={{...pageProps, roles: ["PowerUser"]}}
+      atena={{ ...pageProps, roles: ["administradorMaster"] }}
+      i18n={{ roleToEditLanguage: ["administradorMaster"] }}
+      theme={{
+        ...InfinityForgeProps.theme,
+        darkColor: configurations?.darkColor || "#000",
+        buttonColor: configurations?.buttonColor,
+        primaryColor: configurations?.primaryColor || "#000",
+        tertiaryColor: configurations?.tertiaryColor || "#000",
+        secondaryColor: configurations?.secondaryColor || "#000",
+        buttonBackgroundColor: configurations?.buttonBackgroundColor,
+      }}
     >
       <Head>
         <title>Raiox da prova</title>
@@ -52,11 +71,10 @@ export default function App({ pageProps, Component }) {
           />
         </noscript>
       </Head>
-
-
-        <GlobalStyles />
+      <ConfigurationComponent>
+        <GlobalStyles $configurations={configurations} />
         <Component {...pageProps} />
-    
+      </ConfigurationComponent>
     </InfinityForgeProviders>
   );
 }

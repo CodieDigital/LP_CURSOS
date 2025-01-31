@@ -22,6 +22,7 @@ export function WhyChoose() {
           {
             name: "items",
             gridColumns: 1,
+            label: "Novo item",
             placeholder: "Item",
             InputComponent: "InputManager",
             inputs: [
@@ -34,7 +35,7 @@ export function WhyChoose() {
                   sizeImageFile: "60x60",
                   InputComponent: "InputFile",
                   enableMobileImage: false,
-                  uploadFileVersion: "v2",
+                  upload: { version: "v2" },
                 },
               ],
               [

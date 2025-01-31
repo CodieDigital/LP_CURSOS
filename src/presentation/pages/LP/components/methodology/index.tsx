@@ -22,8 +22,9 @@ export function Methodology() {
         [
           {
             name: "items",
-            gridColumns: 1,
+            label: "Novo item",
             placeholder: "Item",
+            gridColumns: 1,
             InputComponent: "InputManager",
             inputs: [
               [
@@ -35,7 +36,7 @@ export function Methodology() {
                   sizeImageFile: "60x60",
                   InputComponent: "InputFile",
                   enableMobileImage: false,
-                  uploadFileVersion: "v2",
+                  upload: { version: "v2" },
                 },
               ],
               [

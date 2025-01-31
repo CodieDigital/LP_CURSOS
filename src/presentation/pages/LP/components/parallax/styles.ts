@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 export const Parallax = styled("section")`
+  padding: 30px 0;
+  text-align: center;
+  min-height: 550px;
+
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  padding: 30px 0;
-  min-height: 550px;
 
   .container {
     min-height: inherit;
@@ -19,8 +21,14 @@ export const Parallax = styled("section")`
 
   h2 {
     color: ${({ theme }) => theme.grey};
-    text-align: center;
     text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+    line-height: 1.25;
+  }
+
+  .description {
+    color: #ffff;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5),
+      0px 0px 20px rgba(0, 0, 0, 0.25);
     line-height: 1.25;
   }
 

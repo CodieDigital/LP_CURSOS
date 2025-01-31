@@ -18,7 +18,7 @@ export function ImageText({
   refSection,
   aspectRatio = "704/457",
 }: ImageTextProps) {
-  const { title, images, Section, description, jsonContent } =
+  const { title, images, subtitle, Section, description, jsonContent } =
     useDynamicSection<{
       items: { title?: string; description?: string }[];
     }>({
@@ -30,14 +30,18 @@ export function ImageText({
           sizeImageFile: aspectRatio,
           multiple: false,
         },
+        subtitle: {},
         description: {},
       },
       customForm: {
         inputs: [
           [
             {
-              InputComponent: "InputManager",
               name: "items",
+              label: "Novo item",
+              placeholder: "Item",
+              gridColumns: 2,
+              InputComponent: "InputManager",
               inputs: [
                 [
                   {
@@ -69,6 +73,13 @@ export function ImageText({
       >
         <Container>
           <div className="text">
+            {subtitle && (
+              <div
+                className="subtitle font-18-bold"
+                dangerouslySetInnerHTML={{ __html: subtitle }}
+              />
+            )}
+
             {title && (
               <h2
                 className="font-48-bold"

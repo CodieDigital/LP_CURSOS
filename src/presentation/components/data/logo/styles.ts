@@ -7,6 +7,10 @@ export const Logo = styled(Link)`
   max-width: 187px;
   aspect-ratio: 187/60;
 
+  img {
+    object-fit: contain;
+  }
+
   @media only screen and (max-width: 1600px) {
     max-width: 170px;
   }

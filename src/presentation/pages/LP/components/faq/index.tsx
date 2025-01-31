@@ -4,7 +4,7 @@ import { Accordion, Button, Container, Error } from "infinity-forge";
 import * as S from "./styles";
 
 export function Faq() {
-  const { Section, jsonContent } = useDynamicSection<{
+  const { title, Section, jsonContent } = useDynamicSection<{
     items: { title: string; description: string }[];
   }>({
     isGlobal: true,
@@ -13,8 +13,11 @@ export function Faq() {
       inputs: [
         [
           {
-            InputComponent: "InputManager",
             name: "items",
+            label: "Novo item",
+            placeholder: "Item",
+            gridColumns: 1,
+            InputComponent: "InputManager",
             inputs: [
               [
                 {

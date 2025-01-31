@@ -2,10 +2,6 @@ import("next").NextConfig;
 
 const nextConfig = async () => {
   return {
-    i18n: {
-      locales: ["pt-BR"],
-      defaultLocale: "pt-BR",
-    },
     env: {
       api: process.env.api,
       recaptcha: process.env.recaptcha,

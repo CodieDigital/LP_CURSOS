@@ -4,7 +4,7 @@ import { Button, Container, Error } from "infinity-forge";
 import * as S from "./styles";
 
 export function Parallax() {
-  const { images, title, Section } = useDynamicSection({
+  const { images, title, Section, description } = useDynamicSection({
     refSection: "parallax",
     fields: {
       title: {},
@@ -12,6 +12,7 @@ export function Parallax() {
         multiple: false,
         sizeImageFile: "1920/600",
       },
+      description: {},
     },
   });
 
@@ -26,6 +27,13 @@ export function Parallax() {
               <h2
                 className="font-48-bold"
                 dangerouslySetInnerHTML={{ __html: title }}
+              />
+            )}
+
+            {description && (
+              <p
+                className="font-18-regular description"
+                dangerouslySetInnerHTML={{ __html: description }}
               />
             )}
           </Container>

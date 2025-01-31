@@ -1,7 +1,13 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { Configurations } from "../hooks";
 
-export const GlobalStyles = createGlobalStyle`
-  @font-face {
+export const GlobalStyles = createGlobalStyle<{
+  $configurations?: Configurations;
+}>` 
+
+
+
+@font-face {
     font-family: "Saira";
     src: url("/fonts/Saira-Bold.ttf");
     font-weight: 700;
@@ -35,6 +41,11 @@ export const GlobalStyles = createGlobalStyle`
   ::-webkit-scrollbar-thumb {
     background-color: ${(props) => props.theme.green};
   }
+  
+  .conntent_form_infinity_forge > div {
+    display: block !important;
+  }
+
 
   h1,
   h2,

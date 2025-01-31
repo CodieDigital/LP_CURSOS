@@ -4,9 +4,10 @@ import {
   Container,
   useWindow,
   useCarousel,
+  useDynamicSection,
 } from "infinity-forge";
+
 import * as S from "./styles";
-import { useDynamicSection } from "infinity-forge";
 
 export function Banner() {
   const _window = useWindow();
@@ -15,11 +16,11 @@ export function Banner() {
     useDynamicSection({
       refSection: "BannerHome",
       fields: {
-        images: {},
         title: {},
-        description: {},
-        linkText: {},
+        images: {},
         linkUrl: {},
+        linkText: {},
+        description: {},
       },
     });
 
