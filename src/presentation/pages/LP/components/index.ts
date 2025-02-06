@@ -4,3 +4,4 @@ export * from "./layout";
 export * from "./parallax";
 export * from "./why-choose";
 export * from "./methodology";
+export * from "./our-partners";

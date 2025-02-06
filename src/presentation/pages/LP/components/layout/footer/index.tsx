@@ -13,20 +13,44 @@ import * as S from "./styles";
 
 export function Footer() {
   const { jsonContent } = useConfigurations();
-  const { linkText, linkUrl, Section } = useDynamicSection({
+  const {
+    linkText,
+    linkUrl,
+    Section,
+    jsonContent: json,
+  } = useDynamicSection<{
+    button2Css?: string;
+  }>({
     refSection: "footer",
     fields: {
       linkUrl: {},
       linkText: {},
+    },
+    customForm: {
+      inputs: [
+        [
+          {
+            InputComponent: "Input",
+            label: "Botão 2 - CSS",
+            name: "jsonContent.button2Css",
+            placeholder: "Informe o CSS do botão 2",
+          },
+        ],
+      ],
     },
   });
 
   return (
     <Error name="Footer">
       <Section>
-        <S.Footer style={{ background: jsonContent?.footerBackground }}>
+        <S.Footer
+          style={{ background: jsonContent?.footerBackground }}
+          $buttoncss={json?.button2Css}
+        >
           <Container>
-            <Logo />
+            <div>
+              <Logo />
+            </div>
 
             <div className="buttons">
               {linkText && linkUrl && (
@@ -38,41 +62,38 @@ export function Footer() {
                 />
               )}
               <EnterButton />
-              {/* <Button
-              svg="IconUser"
-              text="Área do Aluno"
-              href="https://curso.raioxdaprova.com/login"
-              target="_blank"
-              className="font-16-bold"
-            /> */}
             </div>
 
             <div className="social">
-              <a href="https://www.instagram.com/raioxdaprova" target="_blank">
-                <Icon name="InstagramIcon" />
-              </a>
+              {jsonContent?.instagram && (
+                <a href={jsonContent?.instagram} target="_blank">
+                  <Icon name="InstagramIcon" />
+                </a>
+              )}
 
-              <a href="https://www.youtube.com/@raioxdaprova" target="_blank">
-                <Icon name="IconYouTube" />
-              </a>
+              {jsonContent?.youtube && (
+                <a href={jsonContent?.youtube} target="_blank">
+                  <Icon name="IconYouTube" />
+                </a>
+              )}
 
-              <a
-                href="https://www.facebook.com/profile.php?id=61559851344172"
-                target="_blank"
-              >
-                <Icon name="IconFacebook" />
-              </a>
+              {jsonContent?.facebook && (
+                <a href={jsonContent?.facebook} target="_blank">
+                  <Icon name="IconFacebook" />
+                </a>
+              )}
 
-              <a href={phone.generatePhoneUrl({ phoneNumber: "45999645572" })}>
-                <Icon name="PhoneIcon" />
-              </a>
+              {jsonContent?.linkedin && (
+                <a href={jsonContent?.linkedin} target="_blank">
+                  <Icon name="LinkedinIcon" />
+                </a>
+              )}
 
-              {/* <a
-              href="https://www.linkedin.com/company/codie-digital/"
-              target="_blank"
-            >
-              <Icon name="LinkedinIcon" />
-            </a> */}
+              {jsonContent?.tiktok && (
+                <a href={jsonContent?.tiktok} target="_blank">
+                  <Icon name="IconTikTok" />
+                </a>
+              )}
             </div>
           </Container>
 

@@ -20,8 +20,17 @@ export type Configurations = {
   pixelFacebook?: string;
   loginUrl?: string;
   subscriptionPrice?: string;
+  pageTitle?: string;
 
   favicon?: FileSystemType[];
+
+  whatsappNumber?: string;
+  whatsappMessage?: string;
+  facebook?: string;
+  instagram?: string;
+  tiktok?: string;
+  linkedin?: string;
+  youtube?: string;
 } & IConfigurationsTheme;
 
 export function useConfigurations() {
@@ -32,6 +41,11 @@ export function useConfigurations() {
       button: { text: "Salvar" },
       inputs: [
         [
+          {
+            InputComponent: "Input",
+            label: "Título da página",
+            name: "jsonContent.pageTitle",
+          },
           {
             InputComponent: "Input",
             label: "Cor de fundo do Header",
@@ -129,6 +143,57 @@ export function useConfigurations() {
             InputComponent: "Input",
             label: "Cor de fundo dos botões",
             name: "jsonContent.buttonBackgroundColor",
+          },
+        ],
+        [
+          {
+            InputComponent: "InputMask",
+            label: "Número de Whatsapp",
+            name: "jsonContent.whatsappNumber",
+            mask: "(__) _____-____",
+            placeholder: "(00) 00000-0000",
+          },
+          {
+            InputComponent: "Input",
+            label: "Mensagem de Whatsapp",
+            name: "jsonContent.whatsappMessage",
+            placeholder: "Informe a mensagem de Whatsapp",
+          },
+        ],
+        [
+          {
+            InputComponent: "Input",
+            label: "Instagram",
+            name: "jsonContent.instagram",
+            placeholder: "Informe o link do Instagram",
+          },
+          {
+            InputComponent: "Input",
+            label: "Facebook",
+            name: "jsonContent.facebook",
+            placeholder: "Informe o link do Facebook",
+          },
+        ],
+        [
+          {
+            InputComponent: "Input",
+            label: "Tiktok",
+            name: "jsonContent.tiktok",
+            placeholder: "Informe o link do Tiktok",
+          },
+          {
+            InputComponent: "Input",
+            label: "Linkedin",
+            name: "jsonContent.linkedin",
+            placeholder: "Informe o link do Linkedin",
+          },
+        ],
+        [
+          {
+            InputComponent: "Input",
+            label: "Youtube",
+            name: "jsonContent.youtube",
+            placeholder: "Informe o link do Youtube",
           },
         ],
       ],

@@ -39,7 +39,7 @@ export const GlobalStyles = createGlobalStyle<{
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: ${(props) => props.theme.green};
+    background-color: ${(props) => props.theme.primaryColor};
   }
   
   .conntent_form_infinity_forge > div {
@@ -99,6 +99,32 @@ export const GlobalStyles = createGlobalStyle<{
     gap: 15px;
   }
 
+  .swiper-pagination {
+  height: 20px;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    opacity: 0.3;
+    cursor: pointer;
+
+    &-active {
+      opacity: 1;
+    }
+    
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+
   .spacing-y-100 {
     padding: 100px 0;
   }
@@ -130,5 +156,21 @@ export const GlobalStyles = createGlobalStyle<{
       gap: 0;
       flex-direction: column;
     }
+  }
+
+  @media only screen and (max-width:768px) {
+    .swiper-pagination {
+    height: 10px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    .swiper-pagination-bullet {
+      width: 6px;
+      height: 6px;
+    }
+  }
   }
 `;

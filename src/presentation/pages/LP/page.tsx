@@ -1,16 +1,20 @@
-import { ComoFunciona, Contact, ImageText } from "@/presentation";
+import { Contact, ImageText } from "@/presentation";
 import {
   Faq,
   Banner,
-  Parallax,
   Layout,
+  Parallax,
   WhyChoose,
   Methodology,
+  OurPartners,
 } from "./components";
 
 import * as S from "./styles";
 
 export function Lp() {
+  // erro na vercel para n subir
+  const =
+
   return (
     <S.Lp>
       <Layout>
@@ -29,9 +33,10 @@ export function Lp() {
         {/* <ComoFunciona /> */}
         <Methodology />
         <WhyChoose />
+        <OurPartners />
         <Parallax />
         <Faq />
-        {/* <Contact /> */}
+        <Contact />
       </Layout>
     </S.Lp>
   );

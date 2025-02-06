@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ImageTextProps } from ".";
 
 export const ImageText = styled("section")<{
+  $subtitleCss?: string;
   $direction: ImageTextProps["direction"];
   $aspectRatio: ImageTextProps["aspectRatio"];
 }>`
@@ -37,6 +38,8 @@ export const ImageText = styled("section")<{
       color: ${({ theme }) => theme.primaryColor};
       line-height: 1.25;
       margin-bottom: 10px;
+
+      ${({ $subtitleCss }) => $subtitleCss}
     }
 
     .description {

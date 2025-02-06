@@ -17,6 +17,10 @@ export const Faq = styled("section")<{ $boxBackground?: string }>`
       gap: 20px;
       flex-direction: column;
 
+      > div:has(.content.show) > button .actions svg {
+        transform: rotate(90deg);
+      }
+
       > div {
         margin: 0;
         padding: 0;
@@ -39,6 +43,7 @@ export const Faq = styled("section")<{ $boxBackground?: string }>`
               fill: ${({ theme }) => theme.primaryColor};
               width: 20px;
               height: auto;
+              transform: rotate(270deg);
             }
           }
         }

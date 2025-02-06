@@ -67,6 +67,8 @@ export function Faq() {
                       <Accordion
                         key={index}
                         title={item.title || ""}
+                        closeIcon="IconLeftChevron"
+                        openIcon="IconLeftChevron"
                         children={
                           <div
                             className="font-16-regular description"

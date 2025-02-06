@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Footer = styled("footer")`
+export const Footer = styled("footer")<{ $buttoncss?: string }>`
   background-color: ${({ theme }) => theme.black};
   display: flex;
   flex-direction: column;
@@ -25,8 +25,11 @@ export const Footer = styled("footer")`
     }
 
     .enter-button {
-      color: ${({ theme }) => theme.primaryColor};
-      background-color: transparent;
+      svg {
+        fill: ${({ theme }) => theme.primaryColor};
+      }
+
+      ${(P) => P.$buttoncss || "color: ${({ theme }) => theme.primaryColor};"}
     }
   }
 

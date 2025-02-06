@@ -22,7 +22,7 @@ export const ButtonStyles = styled("div").attrs({
     height: 48px;
     padding: 0px 30px;
     border-radius: 50px;
-    background-color: ${(props) => props.theme.primaryColor};
+    background: ${(props) => props.theme.buttonBackgroundColor};
 
     width: 100%;
     max-width: fit-content;

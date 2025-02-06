@@ -6,6 +6,7 @@ export type IJsonContent = {
   button1Color: string;
   button1Background: string;
   button1IsExternal: string;
+  button2Css?: string;
   image;
 };
 
@@ -56,6 +57,12 @@ export const dynamicConfig: DynamicSectionProps = {
           label: "Botão 1 - Cor de fundo",
           name: "jsonContent.button1Background",
           placeholder: "Informe a cor de fundo do botão 1",
+        },
+        {
+          InputComponent: "Input",
+          label: "Botão 2 - CSS",
+          name: "jsonContent.button2Css",
+          placeholder: "Informe o CSS do botão 2",
         },
       ],
     ],

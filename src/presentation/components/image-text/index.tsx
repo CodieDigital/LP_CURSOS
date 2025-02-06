@@ -21,6 +21,7 @@ export function ImageText({
   const { title, images, subtitle, Section, description, jsonContent } =
     useDynamicSection<{
       items: { title?: string; description?: string }[];
+      subtitleCss?: string;
     }>({
       refSection,
       isGlobal,
@@ -35,6 +36,13 @@ export function ImageText({
       },
       customForm: {
         inputs: [
+          [
+            {
+              name: "jsonContent.subtitleCss",
+              InputComponent: "Input",
+              label: "CSS do Subtítulo",
+            },
+          ],
           [
             {
               name: "items",
@@ -70,6 +78,7 @@ export function ImageText({
         className="spacing-y-100"
         $direction={direction}
         $aspectRatio={aspectRatio}
+        $subtitleCss={jsonContent?.subtitleCss}
       >
         <Container>
           <div className="text">

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Banner = styled("section")`
+export const Banner = styled("section")<{ $botao2css?: string }>`
   .banner-slide {
     background-repeat: no-repeat;
     background-size: cover;
@@ -46,10 +46,14 @@ export const Banner = styled("section")`
       gap: 16px;
       align-items: center;
 
-      a {
-        color: ${({ theme }) => theme.primaryColor};
-        border: 1px solid ${({ theme }) => theme.primaryColor};
-        background-color: transparent;
+      > div:last-child a {
+        svg {
+          fill: ${(p) => p.theme.primaryColor};
+        }
+
+        ${(p) =>
+          p.$botao2css ||
+          "color: ${({ theme }) => theme.primaryColor}; border: 1px solid ${({ theme }) => theme.primaryColor}; background: transparent !important;"}
       }
     }
   }

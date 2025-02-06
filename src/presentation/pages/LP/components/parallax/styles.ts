@@ -19,6 +19,12 @@ export const Parallax = styled("section")`
     flex-direction: column;
   }
 
+  h2,
+  .description {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
   h2 {
     color: ${({ theme }) => theme.grey};
     text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);

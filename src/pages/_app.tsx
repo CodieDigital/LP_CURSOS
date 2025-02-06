@@ -13,6 +13,7 @@ import {
 } from "@/presentation";
 
 import "infinity-forge/dist/infinity-forge.css";
+import { useTheme } from "styled-components";
 
 export default function App(ctx) {
   const initialConfigurations = ctx?.pageProps
@@ -43,11 +44,14 @@ export default function App(ctx) {
     <InfinityForgeProviders
       {...InfinityForgeProps}
       siteConfigurations={{
-        whatsappfixo: true,
-        whatsapp: phone.whatsapp.generateWhatsappUrl({
-          phoneNumber: "45999645572",
-          message: "Olá, gostaria de mais informações sobre o curso",
-        }),
+        ...(configurations.whatsappNumber &&
+          configurations.whatsappMessage && {
+            whatsappfixo: true,
+            whatsapp: phone.whatsapp.generateWhatsappUrl({
+              phoneNumber: configurations.whatsappNumber,
+              message: configurations.whatsappMessage,
+            }),
+          }),
       }}
       atena={{ ...ctx?.pageProps, roles: ["administradorMaster"] }}
       i18n={{ roleToEditLanguage: ["administradorMaster"] }}
@@ -62,16 +66,22 @@ export default function App(ctx) {
       }}
     >
       <Head>
-        <title>Raiox da prova</title>
+        <title>{configurations.pageTitle}</title>
 
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1245127063575041&ev=PageView&noscript=1"
-          />
-        </noscript>
+        {configurations.favicon && (
+          <link rel="icon" href={configurations.favicon[0]?.url} />
+        )}
+
+        {configurations.pixelFacebook && (
+          <noscript>
+            <img
+              height="1"
+              width="1"
+              style={{ display: "none" }}
+              src={`https://www.facebook.com/tr?id=1245127063575041&ev=PageView&noscript=1`}
+            />
+          </noscript>
+        )}
       </Head>
       <ConfigurationComponent>
         <GlobalStyles $configurations={configurations} />
