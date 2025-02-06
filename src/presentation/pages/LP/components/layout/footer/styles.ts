@@ -19,9 +19,13 @@ export const Footer = styled("footer")`
     gap: 16px;
     align-items: center;
 
-    > div:last-child > a {
-      color: ${({ theme }) => theme.green};
-      border: 1px solid ${({ theme }) => theme.green};
+    a {
+      color: ${({ theme }) => theme.buttonColor};
+      border: 1px solid ${({ theme }) => theme.primaryColor};
+    }
+
+    .enter-button {
+      color: ${({ theme }) => theme.primaryColor};
       background-color: transparent;
     }
   }

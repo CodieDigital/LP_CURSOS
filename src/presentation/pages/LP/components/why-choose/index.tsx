@@ -5,6 +5,8 @@ import * as S from "./styles";
 
 export function WhyChoose() {
   const { title, Section, jsonContent } = useDynamicSection<{
+    boxBackground?: string;
+    sectionBackground?: string;
     items: {
       id: string;
       image: FileSystemType[];
@@ -18,6 +20,20 @@ export function WhyChoose() {
     },
     customForm: {
       inputs: [
+        [
+          {
+            name: "jsonContent.sectionBackground",
+            label: "Cor de fundo da Seção",
+            placeholder: "informe a cor de fundo da seção",
+            InputComponent: "Input",
+          },
+          {
+            name: "jsonContent.boxBackground",
+            label: "Cor de fundo das Caixas",
+            placeholder: "Informe a cor de fundo das caixas",
+            InputComponent: "Input",
+          },
+        ],
         [
           {
             name: "items",
@@ -64,7 +80,12 @@ export function WhyChoose() {
   return (
     <Error name="WhyChoose">
       <Section>
-        <S.WhyChoose className="spacing-y-100">
+        <S.WhyChoose
+          className="spacing-y-100"
+          style={{
+            background: jsonContent?.sectionBackground || "transparent",
+          }}
+        >
           <Container>
             {title && (
               <h2
@@ -77,7 +98,12 @@ export function WhyChoose() {
               jsonContent?.items?.length > 0 && (
                 <div className="cards">
                   {jsonContent?.items?.map((item) => (
-                    <div key={item?.id}>
+                    <div
+                      key={item?.id}
+                      style={{
+                        background: jsonContent?.boxBackground || "transparent",
+                      }}
+                    >
                       <div className="titles">
                         {item?.image?.length > 0 && (
                           <div className="icon">

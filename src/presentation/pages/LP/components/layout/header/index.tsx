@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 
-import { Error, Button, Container } from "infinity-forge";
+import { Error, Button, Container, useDynamicSection } from "infinity-forge";
 
-import { Logo } from "@/presentation";
+import { EnterButton, Logo, useConfigurations } from "@/presentation";
 
 import * as S from "./styles";
 
@@ -11,6 +11,8 @@ export function Header({
 }: {
   hasEnterbutton?: boolean;
 }) {
+  const { jsonContent } = useConfigurations();
+
   const router = useRouter();
   const isEditing =
     router?.query?.editMode == "true" || router?.query?.showPreview == "true";
@@ -21,21 +23,29 @@ export function Header({
         $hasEnterbutton={hasEnterbutton}
         style={
           isEditing
-            ? { position: "static", background: "rgba(0, 0, 0, 0.8)" }
-            : undefined
+            ? {
+                position: "static",
+                background:
+                  jsonContent?.headerBackground || "rgba(0, 0, 0, 0.8)",
+              }
+            : {
+                background: jsonContent?.headerBackground,
+              }
         }
       >
         <Container>
           <Logo />
 
           {hasEnterbutton && (
-            <Button
-              svg="IconUser"
-              text="Área do Aluno"
-              href="https://curso.raioxdaprova.com/login"
-              target="_blank"
-              className="font-16-bold"
-            />
+            // <Button
+            //   svg="IconUser"
+            //   text="Área do Aluno"
+            //   href="https://curso.raioxdaprova.com/login"
+            //   target="_blank"
+            //   className="font-16-bold"
+            // />
+
+            <EnterButton />
           )}
         </Container>
       </S.Header>

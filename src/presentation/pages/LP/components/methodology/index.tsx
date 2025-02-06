@@ -11,6 +11,7 @@ export function Methodology() {
       title: string;
       description: string;
     }[];
+    boxBackground?: string;
   }>({
     refSection: "methodology",
     fields: {
@@ -19,6 +20,14 @@ export function Methodology() {
     },
     customForm: {
       inputs: [
+        [
+          {
+            name: "jsonContent.boxBackground",
+            label: "Cor de fundo das Caixas",
+            placeholder: "Informe a cor de fundo das caixas",
+            InputComponent: "Input",
+          },
+        ],
         [
           {
             name: "items",
@@ -89,7 +98,12 @@ export function Methodology() {
               jsonContent?.items?.length > 0 && (
                 <div className="cards">
                   {jsonContent?.items?.map((item) => (
-                    <div key={item?.id}>
+                    <div
+                      key={item?.id}
+                      style={{
+                        background: jsonContent?.boxBackground || "transparent",
+                      }}
+                    >
                       {item?.image?.length > 0 && (
                         <div className="icon">
                           <NextImage src={item?.image?.[0]?.url} />

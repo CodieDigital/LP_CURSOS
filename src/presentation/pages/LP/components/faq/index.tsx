@@ -4,13 +4,22 @@ import { Accordion, Button, Container, Error } from "infinity-forge";
 import * as S from "./styles";
 
 export function Faq() {
-  const { title, Section, jsonContent } = useDynamicSection<{
+  const { Section, jsonContent } = useDynamicSection<{
+    boxBackground?: string;
     items: { title: string; description: string }[];
   }>({
     isGlobal: true,
     refSection: "faq",
     customForm: {
       inputs: [
+        [
+          {
+            name: "jsonContent.boxBackground",
+            label: "Cor de fundo das Caixas",
+            placeholder: "Informe a cor de fundo das caixas",
+            InputComponent: "Input",
+          },
+        ],
         [
           {
             name: "items",
@@ -43,7 +52,10 @@ export function Faq() {
   return (
     <Error name="Faq">
       <Section>
-        <S.Faq className="spacing-y-100">
+        <S.Faq
+          className="spacing-y-100"
+          $boxBackground={jsonContent?.boxBackground}
+        >
           <Container>
             <div className="text">
               <h2 className="font-48-bold">Perguntas Frequentes</h2>

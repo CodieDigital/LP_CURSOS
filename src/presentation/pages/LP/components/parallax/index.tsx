@@ -4,17 +4,48 @@ import { Button, Container, Error } from "infinity-forge";
 import * as S from "./styles";
 
 export function Parallax() {
-  const { images, title, Section, description } = useDynamicSection({
-    refSection: "parallax",
-    fields: {
-      title: {},
-      images: {
-        multiple: false,
-        sizeImageFile: "1920/600",
+  const { images, title, Section, description, jsonContent } =
+    useDynamicSection<{
+      linkUrl?: string;
+      linkText?: string;
+      linkIsExternal?: true | false;
+    }>({
+      refSection: "parallax",
+      fields: {
+        title: {},
+        images: {
+          multiple: false,
+          sizeImageFile: "1920/600",
+        },
+        description: {},
       },
-      description: {},
-    },
-  });
+
+      customForm: {
+        inputs: [
+          [
+            {
+              name: "jsonContent.linkText",
+              label: "Texto do Link",
+              placeholder: "Digite o texto do link",
+              InputComponent: "Input",
+            },
+          ],
+          [
+            {
+              name: "jsonContent.linkUrl",
+              label: "Url do Link",
+              placeholder: "Digite a url do link",
+              InputComponent: "Input",
+            },
+            {
+              name: "jsonContent.linkIsExternal",
+              label: "Abrir em uma nova aba?",
+              InputComponent: "InputSwitch",
+            },
+          ],
+        ],
+      },
+    });
 
   return (
     <Error name="Parallax">
@@ -34,6 +65,15 @@ export function Parallax() {
               <p
                 className="font-18-regular description"
                 dangerouslySetInnerHTML={{ __html: description }}
+              />
+            )}
+
+            {jsonContent?.linkText && jsonContent?.linkUrl && (
+              <Button
+                text={jsonContent?.linkText}
+                href={jsonContent?.linkUrl}
+                target={jsonContent?.linkIsExternal ? "_blank" : "_self"}
+                className="font-16-bold"
               />
             )}
           </Container>

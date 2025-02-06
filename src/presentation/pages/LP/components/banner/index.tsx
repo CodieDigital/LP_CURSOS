@@ -10,6 +10,8 @@ import {
 
 import { dynamicConfig, IJsonContent } from "./dynamic-config";
 
+import { EnterButton } from "@/presentation";
+
 import * as S from "./styles";
 
 export function Banner() {
@@ -19,15 +21,8 @@ export function Banner() {
       id: "header",
     })?.offsetHeight || 0;
 
-  const {
-    title,
-    Section,
-    images,
-    linkUrl,
-    linkText,
-    description,
-    jsonContent,
-  } = useDynamicSection<IJsonContent>(dynamicConfig);
+  const { title, Section, images, description, jsonContent } =
+    useDynamicSection<IJsonContent>(dynamicConfig);
 
   const { Carousel } = useCarousel({
     items: [
@@ -87,20 +82,37 @@ export function Banner() {
                   />
                 )}
 
-                {(linkText || linkUrl) && (
-                  <Button
-                    text={linkText}
-                    href={linkUrl}
-                    target="_blank"
-                    className="font-16-bold"
-                    svg="IconUserNoBg"
-                  />
-                )}
+                <EnterButton />
               </div>
             </div>
 
             <a href="#next-section" className="arrow">
-              <img src="/images/LP/arrow.gif" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="22"
+                viewBox="0 0 32 22"
+                fill="none"
+              >
+                <g id="arrows">
+                  <path
+                    id="Vector 1"
+                    d="M1 1L16 11L31 1"
+                    stroke={jsonContent?.button1Background}
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="Vector 2"
+                    d="M1 11L16 21L31 11"
+                    stroke={jsonContent?.button1Background}
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
+              </svg>
             </a>
           </Container>
         </div>

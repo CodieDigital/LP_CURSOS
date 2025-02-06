@@ -6,6 +6,7 @@ export type IJsonContent = {
   button1Color: string;
   button1Background: string;
   button1IsExternal: string;
+  image;
 };
 
 export const dynamicConfig: DynamicSectionProps = {

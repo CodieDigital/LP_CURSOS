@@ -55,24 +55,16 @@ export const Banner = styled("section")`
   }
 
   .arrow {
-    transform: rotate(-90deg);
-
     display: flex;
 
-    width: 100%;
-    max-width: 60px;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+    animation: bounceToBottom 1.2s ease-in-out infinite alternate;
 
-    img {
-      transition: 0.3s;
-      width: inherit;
-      max-width: inherit;
-      aspect-ratio: 60/60;
-    }
-
-    &:hover {
-      img {
-        opacity: 0.7;
-      }
+    svg {
+      width: 30px;
+      height: auto;
     }
   }
 
@@ -176,6 +168,18 @@ export const Banner = styled("section")`
           margin-top: 20px;
         }
       }
+    }
+  }
+
+  @keyframes bounceToBottom {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
     }
   }
 `;
