@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Faq = styled("section")`
+export const Faq = styled("section")<{ $boxBackground?: string }>`
   .text {
     color: ${({ theme }) => theme.grey};
     margin: 0 auto;
@@ -27,7 +27,7 @@ export const Faq = styled("section")`
           gap: 10px;
           padding: 20px 30px;
           border-radius: 10px;
-          background-color: ${({ theme }) => theme.grey100};
+          background-color: ${({ $boxBackground }) => $boxBackground};
 
           h2 {
             color: ${({ theme }) => theme.grey};

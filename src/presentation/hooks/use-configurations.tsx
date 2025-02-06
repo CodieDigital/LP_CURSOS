@@ -13,6 +13,8 @@ export type IConfigurationsTheme = {
 };
 
 export type Configurations = {
+  headerBackground?: string;
+  footerBackground?: string;
   logo: FileSystemType[];
   isNetflix: boolean;
   pixelFacebook?: string;
@@ -29,6 +31,18 @@ export function useConfigurations() {
     customForm: {
       button: { text: "Salvar" },
       inputs: [
+        [
+          {
+            InputComponent: "Input",
+            label: "Cor de fundo do Header",
+            name: "jsonContent.headerBackground",
+          },
+          {
+            InputComponent: "Input",
+            label: "Cor de fundo do Footer",
+            name: "jsonContent.footerBackground",
+          },
+        ],
         [
           {
             InputComponent: "Input",

@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
-export const ButtonStyles = styled("div")`
+export const ButtonStyles = styled("div").attrs({
+  className: "infinity-forge-button",
+})`
   display: flex;
   justify-content: center;
 
   a,
   button {
-    color: ${(props) => props.theme.black};
+    color: ${(props) => props.theme.buttonColor};
 
     display: flex;
     align-items: center;

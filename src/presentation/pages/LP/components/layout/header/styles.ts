@@ -7,6 +7,7 @@ export const Header = styled("header")<{ $hasEnterbutton?: boolean }>`
   left: 0;
   width: 100%;
   z-index: 90;
+  box-shadow: 0px 15px 30px 0px rgba(0, 0, 0, 0.5);
 
   .container {
     display: flex;

@@ -15,17 +15,15 @@ import {
 import "infinity-forge/dist/infinity-forge.css";
 
 export default function App(ctx) {
-  const initialConfigurations = ctx?.pageProps ? ctx?.pageProps?.sections?.find(
-    (section) => section?.ref === "global_configurations"
-  )?.jsonContent  : {};
-
-  console.log(initialConfigurations)
+  const initialConfigurations = ctx?.pageProps
+    ? ctx?.pageProps?.sections?.find(
+        (section) => section?.ref === "global_configurations"
+      )?.jsonContent
+    : {};
 
   const router = useRouter();
   const [configurations] = useState<Configurations>(
-    initialConfigurations ? JSON.parse(
-      initialConfigurations
-    ) : undefined
+    initialConfigurations ? JSON.parse(initialConfigurations) : undefined
   );
 
   useEffect(() => {
