@@ -20,6 +20,7 @@ export function Header({
   return (
     <Error name="Header">
       <S.Header
+      id="header"
         $hasEnterbutton={hasEnterbutton}
         style={
           isEditing
