@@ -14,9 +14,9 @@ export const Banner = styled("section")`
     min-height: inherit;
 
     display: flex;
-
     flex-direction: column;
     justify-content: space-between;
+    gap: 15px;
   }
 
   .text {
@@ -180,7 +180,7 @@ export const Banner = styled("section")`
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-10px);
+      transform: translateY(10px);
     }
     100% {
       transform: translateY(0);
