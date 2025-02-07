@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Header = styled("header")<{ $hasEnterbutton?: boolean }>`
-  /* background-color: ${(props) => props.theme.black}; */
   position: absolute;
   top: 0;
   left: 0;
@@ -16,6 +15,16 @@ export const Header = styled("header")<{ $hasEnterbutton?: boolean }>`
     justify-content: ${({ $hasEnterbutton }) =>
       $hasEnterbutton ? "space-between" : "center"};
     padding: 20px 15px;
+  }
+
+  .infinity-forge-button a {
+    background: ${({ theme }) => theme.buttonBackgroundColor} !important;
+    color: ${(p) => p.theme.black} !important;
+    border: none !important;
+
+    svg {
+      fill: currentColor;
+    }
   }
 
   @media only screen and (max-width: 768px) {

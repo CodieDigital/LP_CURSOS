@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const Lp = styled("div")`
-  .custom-image-text section {
-    padding: 0;
+  .about-features {
+    padding-top: 0 !important;
+  }
+
+  .about-goals {
+    padding-top: 0 !important;
   }
 `;

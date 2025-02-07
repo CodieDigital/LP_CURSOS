@@ -18,67 +18,76 @@ export function ImageText({
   refSection,
   aspectRatio = "704/457",
 }: ImageTextProps) {
-  const { title, images, subtitle, Section, description, jsonContent } =
-    useDynamicSection<{
-      items: { title?: string; description?: string }[];
-      subtitleCss?: string;
-    }>({
-      refSection,
-      isGlobal,
-      fields: {
-        title: {},
-        images: {
-          sizeImageFile: aspectRatio,
-          multiple: false,
-        },
-        subtitle: {},
-        description: {},
+  const {
+    title,
+    images,
+    subtitle,
+    Section,
+    description,
+    jsonContent,
+    linkText,
+    linkUrl,
+  } = useDynamicSection<{
+    items: { title?: string; description?: string }[];
+    inverted?: boolean;
+  }>({
+    refSection,
+    isGlobal,
+    fields: {
+      title: {},
+      images: {
+        sizeImageFile: aspectRatio,
+        multiple: false,
       },
-      customForm: {
-        inputs: [
-          [
-            {
-              name: "jsonContent.subtitleCss",
-              InputComponent: "Input",
-              label: "CSS do Subtítulo",
-            },
-          ],
-          [
-            {
-              name: "items",
-              label: "Novo item",
-              placeholder: "Item",
-              gridColumns: 2,
-              InputComponent: "InputManager",
-              inputs: [
-                [
-                  {
-                    InputComponent: "TextEditor",
-                    name: "title",
-                    label: "Título",
-                  },
-                ],
-                [
-                  {
-                    InputComponent: "TextEditor",
-                    name: "description",
-                    label: "Descrição",
-                  },
-                ],
-              ],
-            },
-          ],
+      subtitle: {},
+      description: {},
+      linkText: {},
+      linkUrl: {},
+    },
+    customForm: {
+      inputs: [
+        [
+          {
+            name: "jsonContent.inverted",
+            InputComponent: "InputSwitch",
+            label: "Inverter imagem e texto?",
+          },
         ],
-      },
-    });
+        [
+          {
+            name: "items",
+            label: "Novo item",
+            placeholder: "Item",
+            gridColumns: 2,
+            InputComponent: "InputManager",
+            inputs: [
+              [
+                {
+                  InputComponent: "TextEditor",
+                  name: "title",
+                  label: "Título",
+                },
+              ],
+              [
+                {
+                  InputComponent: "TextEditor",
+                  name: "description",
+                  label: "Descrição",
+                },
+              ],
+            ],
+          },
+        ],
+      ],
+    },
+  });
 
   return (
     <Section>
       <S.ImageText
-        className="spacing-y-100"
-        $direction={direction}
+        className={"spacing-y-100 " + refSection}
+        $direction={jsonContent?.inverted ? "row-reverse" : "row"}
         $aspectRatio={aspectRatio}
-        $subtitleCss={jsonContent?.subtitleCss}
       >
         <Container>
           <div className="text">
@@ -114,29 +123,32 @@ export function ImageText({
                         <Icon name="CheckListIcon" />
 
                         <h3
-                          className="font-18-bold"
+                          className="font-18"
                           dangerouslySetInnerHTML={{
                             __html: item.title || "",
                           }}
                         />
                       </div>
 
-                      <div
-                        className="font-16-regular content"
-                        dangerouslySetInnerHTML={{
-                          __html: item.description || "",
-                        }}
-                      />
+                      {item.description &&
+                        item.description !== "<p><br></p>" && (
+                          <div
+                            className="font-16-regular content"
+                            dangerouslySetInnerHTML={{
+                              __html: item.description || "",
+                            }}
+                          />
+                        )}
                     </li>
                   ))}
                 </ul>
               )}
 
-            {hasButton && (
+            {linkText && linkUrl && (
               <div className="button">
                 <Button
-                  href="https://curso.raioxdaprova.com/"
-                  text="Comece Agora!"
+                  href={linkUrl}
+                  text={linkText}
                   className="font-16-bold"
                   target="_blank"
                 />

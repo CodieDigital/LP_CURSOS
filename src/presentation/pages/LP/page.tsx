@@ -12,9 +12,6 @@ import {
 import * as S from "./styles";
 
 export function Lp() {
-  // erro na vercel para n subir
-  const =
-
   return (
     <S.Lp>
       <Layout>

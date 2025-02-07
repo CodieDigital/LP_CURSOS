@@ -26,18 +26,6 @@ export function Footer() {
       linkUrl: {},
       linkText: {},
     },
-    customForm: {
-      inputs: [
-        [
-          {
-            InputComponent: "Input",
-            label: "Botão 2 - CSS",
-            name: "jsonContent.button2Css",
-            placeholder: "Informe o CSS do botão 2",
-          },
-        ],
-      ],
-    },
   });
 
   return (

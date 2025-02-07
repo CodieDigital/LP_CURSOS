@@ -8,7 +8,7 @@ interface IOutPartnersStyledProps {
 }
 
 export const OurPartners = styled("section")<IOutPartnersStyledProps>`
-  padding-top: 0;
+  padding-top: 0 !important;
   background-color: ${(p) => p.$backgroundSection || p.theme.black};
 
   h2 {

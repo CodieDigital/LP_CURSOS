@@ -123,7 +123,7 @@ export function Banner() {
   return (
     <Section>
       <Error name="Banner">
-        <S.Banner $botao2css={jsonContent?.button2Css}>
+        <S.Banner>
           <Carousel />
         </S.Banner>
         <div id="next-section" />

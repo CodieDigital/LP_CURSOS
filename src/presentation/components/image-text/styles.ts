@@ -57,6 +57,14 @@ export const ImageText = styled("section")<{
           gap: 10px;
           align-items: center;
 
+          strong {
+            font-weight: 700;
+          }
+
+          p {
+            font-weight: 400;
+          }
+
           & + * {
             margin-top: 10px;
           }
@@ -64,6 +72,7 @@ export const ImageText = styled("section")<{
           svg {
             width: 20px;
             height: auto;
+            flex-shrink: 0;
             fill: ${({ theme }) => theme.primaryColor};
           }
         }

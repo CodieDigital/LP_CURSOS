@@ -39,8 +39,8 @@ export function OurPartners() {
   };
 
   return (
-    <Section>
-      <Error name="OurPartners">
+    <Error name="OurPartners">
+      <Section>
         <S.OurPartners {...styles} className="spacing-y-100">
           <Container>
             {title && (
@@ -53,8 +53,8 @@ export function OurPartners() {
             <Carousel />
           </Container>
         </S.OurPartners>
-      </Error>
-    </Section>
+      </Section>
+    </Error>
   );
 }
 

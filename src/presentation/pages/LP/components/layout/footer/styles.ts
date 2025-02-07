@@ -25,11 +25,12 @@ export const Footer = styled("footer")<{ $buttoncss?: string }>`
     }
 
     .enter-button {
+      color: ${({ theme }) => theme.primaryColor};
+      background: transparent !important;
+
       svg {
         fill: ${({ theme }) => theme.primaryColor};
       }
-
-      ${(P) => P.$buttoncss || "color: ${({ theme }) => theme.primaryColor};"}
     }
   }
 

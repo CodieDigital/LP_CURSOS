@@ -58,6 +58,10 @@ export const GlobalStyles = createGlobalStyle<{
     margin: 0;
   }
 
+  .grecaptcha-badge {
+    display: none !important;
+  }
+
   #CALENDAR {
     > div {
       .calendar-header {
