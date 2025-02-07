@@ -44,12 +44,12 @@ export default function App(ctx) {
     <InfinityForgeProviders
       {...InfinityForgeProps}
       siteConfigurations={{
-        ...(configurations.whatsappNumber &&
-          configurations.whatsappMessage && {
+        ...(configurations?.whatsappNumber &&
+          configurations?.whatsappMessage && {
             whatsappfixo: true,
             whatsapp: phone.whatsapp.generateWhatsappUrl({
-              phoneNumber: configurations.whatsappNumber,
-              message: configurations.whatsappMessage,
+              phoneNumber: configurations?.whatsappNumber,
+              message: configurations?.whatsappMessage,
             }),
           }),
       }}
@@ -66,19 +66,19 @@ export default function App(ctx) {
       }}
     >
       <Head>
-        <title>{configurations.pageTitle}</title>
+        <title>{configurations?.pageTitle}</title>
 
-        {configurations.favicon && (
-          <link rel="icon" href={configurations.favicon[0]?.url} />
+        {configurations?.favicon && (
+          <link rel="icon" href={configurations?.favicon[0]?.url} />
         )}
 
-        {configurations.pixelFacebook && (
+        {configurations?.pixelFacebook && (
           <noscript>
             <img
               height="1"
               width="1"
               style={{ display: "none" }}
-              src={`https://www.facebook.com/tr?id=${configurations.pixelFacebook}&ev=PageView&noscript=1`}
+              src={`https://www.facebook.com/tr?id=${configurations?.pixelFacebook}&ev=PageView&noscript=1`}
             />
           </noscript>
         )}
